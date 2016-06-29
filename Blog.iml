@@ -59,6 +59,8 @@
     <orderEntry type="library" scope="PROVIDED" name="Tomcat 8.0.23" level="application_server_libraries" />
     <orderEntry type="library" name="jsp-api" level="project" />
     <orderEntry type="library" name="jsp-api1" level="project" />
+    <orderEntry type="library" name="javax.annotation" level="project" />
+    <orderEntry type="library" name="javax.ejb" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-aop:4.2.4.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: aopalliance:aopalliance:1.0" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-aspects:4.2.4.RELEASE" level="project" />
@@ -113,7 +115,5 @@
     <orderEntry type="library" name="Maven: org.apache.commons:commons-lang3:3.4" level="project" />
     <orderEntry type="library" name="Maven: com.google.code.gson:gson:2.6.2" level="project" />
     <orderEntry type="library" name="Maven: org.modelmapper:modelmapper:0.7.5" level="project" />
-    <orderEntry type="library" name="javax.annotation" level="project" />
-    <orderEntry type="library" name="javax.ejb" level="project" />
   </component>
 </module>
