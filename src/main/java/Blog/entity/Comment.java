@@ -6,7 +6,7 @@ import javax.persistence.*;
  * Created by CrazyCodess on 2016/6/30.
  */
 @Entity
-@Table(name = "comment",catalog = "comment")
+@Table(name = "comment",catalog = "blog")
 public class Comment {
     private int id;
     private String content;

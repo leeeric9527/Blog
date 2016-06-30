@@ -100,6 +100,12 @@ public class BlogController {
         return "blog/blogview";
     }
 
+    @RequestMapping(value = "/delete/{id}",method = RequestMethod.GET)
+    public String deleteBlog(Model model,@PathVariable("id") int id,RedirectAttributes redirectAttributes){
+            blogDao.deleteBlog(id);
+        redirectAttributes.addFlashAttribute("Msg","删除成功！!");
+        return "redirect:/blog/list";
+    }
 
 
 }

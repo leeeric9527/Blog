@@ -25,9 +25,6 @@ public class BlogDao extends BaseDao{
 
         return get(Blog.class,id);
     }
-    public void delete(Blog blog){
-        delete(blog);
-    }
     public void add(Blog blog){
         save(blog);
     }
@@ -81,6 +78,10 @@ public class BlogDao extends BaseDao{
        }
 
         update(blog);
+    }
+    public void deleteBlog(int id){
+        Blog blog=getById(id);
+        delete(blog);
     }
 
 }

@@ -139,6 +139,7 @@
                                         <div class="title"><a href="${rootPath}/blog/viewblog/${blogs.id}">${blogs.title}</a></div>
                                         <div class="decs">${blogs.description}</div>
                                         <div class="time"><i class="fa fa-clock-o"></i>上传时间: ${blogs.inputtime}</div>
+                                        <a href="${rootPath}/blog/delete/${blogs.id}"> <li >删除</li></a>
                                     </div>
                                 </c:when>
                                 <c:otherwise>
@@ -154,6 +155,7 @@
                                         <div class="title"><a href="${rootPath}/blog/viewblog/${blogs.id}">${blogs.title}</a></div>
                                         <div class="decs">${blogs.description}</div>
                                         <div class="time"><i class="fa fa-clock-o"></i>上传时间: ${blogs.inputtime}</div>
+                                       <a href="${rootPath}/blog/delete/${blogs.id}"> <li >删除</li></a>
                                     </div>
                                 </c:otherwise>
                             </c:choose>
