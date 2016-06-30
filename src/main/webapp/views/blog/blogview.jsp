@@ -66,6 +66,45 @@
                                 </div>
                             </div>
                             <div class="comment">
+
+                                <c:choose>
+                                    <c:when test="${empty comments}" >
+                                    </c:when>
+                                    <c:otherwise>
+                                        <c:forEach begin="${listStart}" end="${comments.size()}" items="${comments}" var="comment">
+                                            <div class="comment-cur">
+                                                <div class="container-fluid">
+                                                    <div class="row top">
+                                                        <div class="col-md-1">
+                                                            <img src="${assetsPath}/images/user.jpg" alt=""/>
+                                                        </div>
+                                                        <div class="col-md-9">
+                                                            <div class="mid">
+                                                                <span class="user">${comment.author}：</span>
+                                                                <span class="content">${comment.content}</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row below">
+                                                        <div class="col-md-1"></div>
+                                                        <div class="col-md-2">
+                                                            <div class="pull-left">
+                                                                <span class="time">${comment.inputtime}</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-9">
+                                                            <div class="pull-right">
+                                                                <span class="reply"><a href="#">回复</a></span>
+                                                                <span><a href="#"><i class="fa fa-thumbs-o-up">&nbsp;&nbsp;2333</i></a></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="line"></div>
+                                        </c:forEach>
+                                    </c:otherwise>
+                                </c:choose>
                                 <form action="${rootPath}/blog/comment/${blog.id}" method="post" >
                                 <div class="title">文章评论</div>
                                 <!--<div class="comment-main">-->
@@ -78,44 +117,7 @@
                                 <div class="line"></div>
 
 
-                                <c:choose>
-                                <c:when test="${empty page.list}" >
-                                </c:when>
-                                <c:otherwise>
-                                    <c:forEach begin="${listStart}" end="${blog.comments.size()}" items="${blog.comments}" var="comment">
-                                        <div class="comment-cur">
-                                            <div class="container-fluid">
-                                                <div class="row top">
-                                                    <div class="col-md-1">
-                                                        <img src="${assetsPath}/images/user.jpg" alt=""/>
-                                                    </div>
-                                                    <div class="col-md-9">
-                                                        <div class="mid">
-                                                            <span class="user">${comment.username}：</span>
-                                                            <span class="content">${comment.content}</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row below">
-                                                    <div class="col-md-1"></div>
-                                                    <div class="col-md-2">
-                                                        <div class="pull-left">
-                                                            <span class="time">${comment.inputtime}</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-9">
-                                                        <div class="pull-right">
-                                                            <span class="reply"><a href="">回复</a></span>
-                                                            <span><a href=""><i class="fa fa-thumbs-o-up">&nbsp;&nbsp;2333</i></a></span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="line"></div>
-                                    </c:forEach>
-                                </c:otherwise>
-                                </c:choose>
+
 
 
 

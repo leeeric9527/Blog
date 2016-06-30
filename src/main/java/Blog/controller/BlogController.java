@@ -2,6 +2,7 @@ package Blog.controller;
 
 import Blog.dao.BlogDao;
 import Blog.entity.Blog;
+import Blog.entity.Comment;
 import Blog.entity.User;
 import Blog.page.Page;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 /**
  * Created by CrazyCodess on 2016/6/29.
@@ -26,6 +28,8 @@ public class BlogController {
     @RequestMapping(value = "/viewblog/{posid}" , method = RequestMethod.GET)
     public String  viewBlog(Model  model,@PathVariable("posid") int posid){
         Blog blog=blogDao.getById(posid);
+        List<Comment> comments=blogDao.getCommentByBlog(posid);
+        model.addAttribute("comments",comments);
         model.addAttribute("blog",blog);
         return "blog/blogview";
     }
@@ -96,7 +100,10 @@ public class BlogController {
             author="admin";
         }
         blogDao.comment(id,content,author);
-        model.addAttribute("blog",blogDao.getById(id));
+        Blog blog=blogDao.getById(id);
+        List<Comment> comments=blogDao.getCommentByBlog(id);
+        model.addAttribute("comments",comments);
+        model.addAttribute("blog",blog);
         return "blog/blogview";
     }
 

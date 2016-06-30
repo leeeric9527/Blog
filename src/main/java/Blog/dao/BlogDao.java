@@ -58,8 +58,15 @@ public class BlogDao extends BaseDao{
         update(blog);
     }
 
-    public void comment(int id,String content,String author){
-        System.out.println("评论");
+    public List<Comment> getCommentByBlog(int id){
+        List<Comment> comments;
+        String hql="from Comment as comm where comm.blogid=?";
+        Query query=query(hql);
+        query.setInteger(0,id);
+        comments=query.list();
+        return comments;
+
+/*        System.out.println("评论");
         Blog blog=getById(id);
         Comment comment=new Comment();
         comment.setContent(content);
@@ -75,13 +82,21 @@ public class BlogDao extends BaseDao{
        {
            comments.add(comment);
 
-       }
+       }*/
 
-        update(blog);
+        //update(blog);
     }
     public void deleteBlog(int id){
         Blog blog=getById(id);
         delete(blog);
+    }
+    public void comment(int blogid,String content,String author){
+        Comment comm=new Comment();
+        comm.setBlogid(blogid);
+        comm.setContent(content);
+        comm.setAuthor(author);
+        comm.setInputtime(String.valueOf(System.currentTimeMillis()));
+        save(comm);
     }
 
 }

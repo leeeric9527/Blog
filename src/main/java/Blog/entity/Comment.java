@@ -11,7 +11,8 @@ public class Comment {
     private int id;
     private String content;
     private String inputtime;
-    private String username;
+    private String author;
+    private Integer blogid;
 
     @Id
     @Column(name = "id", nullable = false)
@@ -44,13 +45,23 @@ public class Comment {
     }
 
     @Basic
-    @Column(name = "username", nullable = true, length = 15)
-    public String getUsername() {
-        return username;
+    @Column(name = "author", nullable = true, length = 20)
+    public String getAuthor() {
+        return author;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    @Basic
+    @Column(name = "blogid", nullable = true)
+    public Integer getBlogid() {
+        return blogid;
+    }
+
+    public void setBlogid(Integer blogid) {
+        this.blogid = blogid;
     }
 
     @Override
@@ -63,7 +74,8 @@ public class Comment {
         if (id != comment.id) return false;
         if (content != null ? !content.equals(comment.content) : comment.content != null) return false;
         if (inputtime != null ? !inputtime.equals(comment.inputtime) : comment.inputtime != null) return false;
-        if (username != null ? !username.equals(comment.username) : comment.username != null) return false;
+        if (author != null ? !author.equals(comment.author) : comment.author != null) return false;
+        if (blogid != null ? !blogid.equals(comment.blogid) : comment.blogid != null) return false;
 
         return true;
     }
@@ -73,7 +85,8 @@ public class Comment {
         int result = id;
         result = 31 * result + (content != null ? content.hashCode() : 0);
         result = 31 * result + (inputtime != null ? inputtime.hashCode() : 0);
-        result = 31 * result + (username != null ? username.hashCode() : 0);
+        result = 31 * result + (author != null ? author.hashCode() : 0);
+        result = 31 * result + (blogid != null ? blogid.hashCode() : 0);
         return result;
     }
 }
