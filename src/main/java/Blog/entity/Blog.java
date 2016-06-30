@@ -42,9 +42,9 @@ public class Blog {
     @Column(name = "inputtime", nullable = true, length = 20)
     private String inputtime;
 
-/*    @OneToMany(targetEntity = Comment.class)
+    @OneToMany(targetEntity = Comment.class)
     @JoinColumn(name="id",referencedColumnName = "id")
-    private List<Comment> comments=new ArrayList<Comment>();*/
+    private List<Comment> comments=new ArrayList<Comment>();
 
 
     public Blog(String title, String description, String content,
@@ -74,13 +74,13 @@ public class Blog {
 
 
 
-/*    public List<Comment> getComments() {
+    public List<Comment> getComments() {
         return comments;
     }
 
     public void setComments(List<Comment> comments) {
         this.comments = comments;
-    }*/
+    }
 
     public Blog() {
     }
