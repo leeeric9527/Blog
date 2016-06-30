@@ -1,6 +1,6 @@
 package Blog.page;
 
-import com.xst.dao.BaseDao;
+import Blog.dao.BaseDao;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.criterion.Projections;

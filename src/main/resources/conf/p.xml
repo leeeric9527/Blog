@@ -3,6 +3,8 @@
 
     <persistence-unit name="persistenceUnit">
         <class>Blog.entity.Blog</class>
+        <class>Blog.entity.User</class>
+        <class>Blog.entity.Comment</class>
         <properties>
             <property name="eclipselink.jdbc.url" value="jdbc:mysql://localhost:3306/blog"/>
             <property name="eclipselink.jdbc.driver" value="com.mysql.jdbc.Driver"/>

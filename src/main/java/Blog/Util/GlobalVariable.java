@@ -16,9 +16,9 @@ public class GlobalVariable {
         }
         // TODO 修改为读取config.ini
         this.map.put("assetsPath", "/blog/assets");
-        this.map.put("uploadFilePath", "/usr/local/Blog");
-        this.map.put("rootPath", "/Blog");
-        this.map.put("requestPath","http://localhost:8080/Blog");
+        this.map.put("uploadFilePath", "/usr/local/blog");
+        this.map.put("rootPath", "/blog");
+        this.map.put("requestPath","http://localhost:8080/blog");
     }
 
     public Map<String , String> getAll() {

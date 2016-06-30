@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
     <link rel = "stylesheet" href="${assetsPath}/css/main.css">
     <link rel="stylesheet" href="${assetsPath}/css/reset.css">
-    <title></title>
+    <title>博客</title>
 </head>
 <body>
 <div class="main-wrapper">
@@ -17,8 +17,8 @@
         <nav>
             <div class="logo"><a href="#">英雄联盟blog</a></div>
             <ul>
-                <li><a href="#">链接1</a></li>
-                <li><a href="#">链接1</a></li>
+                <li><a href="${rootPath}/blog/list">博客列表</a></li>
+                <li><a href="${rootPath}/blog/list">链接1</a></li>
                 <li><a href="#">链接1</a></li>
                 <li><a href="jsps/registerpage.jsp">注册</a></li>
             </ul>
