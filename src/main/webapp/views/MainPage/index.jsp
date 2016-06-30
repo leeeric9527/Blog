@@ -8,21 +8,33 @@
 <meta charset="UTF-8">
     <link rel = "stylesheet" href="${assetsPath}/css/main.css">
     <link rel="stylesheet" href="${assetsPath}/css/reset.css">
-    <title>博客</title>
+    <title></title>
 </head>
 <body>
 <div class="main-wrapper">
 
     <header><!--页头开始-->
+
+
+
         <nav>
             <div class="logo"><a href="#">英雄联盟blog</a></div>
+            <c:if test="${sessionScope.user!=null}">
             <ul>
+                <li><a href="${rootPath}/user/logout">退出登录</a></li>
                 <li><a href="${rootPath}/blog/list">博客列表</a></li>
-                <li><a href="${rootPath}/blog/list">链接1</a></li>
-                <li><a href="#">链接1</a></li>
-                <li><a href="jsps/registerpage.jsp">注册</a></li>
+
+                <li><a href="#"> ${sessionScope.user.username}</a></li>
+                </ul>
+            </c:if>
+            <c:if test="${sessionScope.user==null}">
+            <ul>
+                <li><a href="${rootPath}/user/login">登陆</a></li>
+                <li><a href="${rootPath}/user/register">注册</a></li>
             </ul>
+            </c:if>
         </nav>
+
         <div id="banner">
             <div class="inner">
                 <div>
@@ -33,7 +45,7 @@
                 <p class="sub-heading">a coder from heart
                     this is a coder
                     道旁梧桐树叶日渐枯黄老去, 偶有风起，孤寂心生</p>
-                <button>了解我</button>
+                <%--<button>了解我</button>--%>
                 <div class="more">更多</div>
             </div>
         </div>
