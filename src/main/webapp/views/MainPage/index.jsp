@@ -7,6 +7,7 @@
 <head lang="en">
 <meta charset="UTF-8">
     <link rel = "stylesheet" href="${assetsPath}/css/main.css">
+   <%-- <link rel="stylesheet" href="${assetsPath}/css/app.min.css">--%>
     <link rel="stylesheet" href="${assetsPath}/css/reset.css">
     <title></title>
 </head>
@@ -18,7 +19,7 @@
 
 
         <nav>
-            <div class="logo"><a href="#">英雄联盟blog</a></div>
+            <div class="logo"><a id="item2">博客平台blog</a></div>
             <c:if test="${sessionScope.user!=null}">
             <ul>
                 <li><a href="${rootPath}/user/logout">退出登录</a></li>
@@ -39,7 +40,7 @@
             <div class="inner">
                 <div>
                     <div class="hr"></div>
-                    <h1>英雄联盟</h1>
+                    <h1>博客平台</h1>
                     <div class="hr"></div>
                 </div>
                 <p class="sub-heading">a coder from heart
@@ -54,58 +55,49 @@
 <div id="content"><!--内容开始-->
 <section class="green-section">
     <div class="wrapper">
-        <h2>标题</h2>
+        <h2>博客平台</h2>
         <div class="hr"></div>
         <div class="word-said">
-            <p class="sub-heading">One of the most effective ways to
-                improve our own writing is to spend
-                time reading the best writing of others.
-                This collection of notable essays</p>
+            <p class="sub-heading">每天写一篇博客，一年能写365篇</p>
         </div>
     </div>
     <div class="icon-group">
-        <span class="icon">item1</span>
-        <span class="icon">item2</span>
-        <span class="icon">item3</span>
+       <a href="#item1"><span class="icon"><font color=white>博客</font></span></a>
+        <a href="#item2"> <span class="icon"><font color=white>首页</font></span></a>
+        <%--<span class="icon">item3</span>--%>
     </div>
 </section>
     <section class="gray-section">
 
         <div class="article-preview">
             <div class="img-section">
-                <img src="${assetsPath}/images/pic01.jpg" alt="">
+               <a href="${rootPath}/blog/viewblog/${page.list.get(0).id}"> <img src="${page.list.get(0).thumb}" alt=""></a>
             </div>
             <div class="text-section">
-                <h2>另外一个标题</h2>
-                <p>One of the most effective ways to
-                    improve our own writing is to spend
-                    time reading the best writing of others.
-                    This collection of notable essays</p>
+               <h2>${page.list.get(0).title}</h2>
+                <p>${page.list.get(0).description}</p>
             </div>
         </div>
         <div class="article-preview">
 
             <div class="text-section">
-                <h2>另外一个标题</h2>
-                <p>One of the most effective ways to
-                    improve our own writing is to spend
-                    time reading the best writing of others.
-                    This collection of notable essays</p>
+
+                    <h2>${page.list.get(1).title}</h2>
+                <p>${page.list.get(1).description}</p>
             </div>
             <div class="img-section">
-                <img src="${assetsPath}/images/pic02.jpg" alt="">
+                <a href="${rootPath}/blog/viewblog/${page.list.get(1).id}">
+                    <img src="${page.list.get(1).thumb}" alt=""></a>
             </div>
         </div>
         <div class="article-preview">
             <div class="img-section">
-                <img src="${assetsPath}/images/pic03.jpg" alt="">
+                <a href="${rootPath}/blog/viewblog/${page.list.get(2).id}"><img src="${page.list.get(2).thumb}" alt=""></a>
             </div>
             <div class="text-section">
-                <h2>另外一个标题</h2>
-                <p>One of the most effective ways to
-                    improve our own writing is to spend
-                    time reading the best writing of others.
-                    This collection of notable essays</p>
+
+                <h2>${page.list.get(2).title}</h2>
+                <p>${page.list.get(2).description}</p>
             </div>
         </div>
     </section>
@@ -113,64 +105,62 @@
         <div class="purple-content">
         <div class="heading-wrapper">
 
-            <h2>另一个标题</h2>
+           <a id="item1"> <h2>博客概览</h2></a>
             <div class="hr"></div>
             <div class="sub-heading">
-                One of the most effective ways to
-                improve our own writing is to spend
-                time reading the best writing of others.
-                This collection of notable essays
+                我们不编写博客，我们只是博客的搬运工
             </div>
         </div>
         <div calss="card-group">
             <div class="card">
-                <h3>标题三</h3>
-                <p>One of the most effective ways to
-                    improve our own writing is to spend
-                    time reading the best writing of others.
-                    This collection of notable essays</p>
+              <a href="${rootPath}/blog/viewblog/${page.list.get(2).id}" style='text-decoration:none;'>
+                <font color="black"><h3>${page.list.get(0).title}</h3></font>
+              </a>
+                <p>${page.list.get(0).description}</p>
             </div>
             <div class="card">
-                <h3>标题三</h3>
-                <p>One of the most effective ways to
-                    improve our own writing is to spend
-                    time reading the best writing of others.
-                    This collection of notable essays</p>
+                <a href="${rootPath}/blog/viewblog/${page.list.get(2).id}" style='text-decoration:none;'>
+                    <font color="black">
+                <h3>${page.list.get(1).title}</h3>
+                        </font>
+                    </a>
+                <p>${page.list.get(1).description}</p>
             </div>
             <div class="card">
-                <h3>标题三</h3>
-                <p>One of the most effective ways to
-                    improve our own writing is to spend
-                    time reading the best writing of others.
-                    This collection of notable essays</p>
+                <a href="${rootPath}/blog/viewblog/${page.list.get(2).id}" style='text-decoration:none;'>
+                    <font color="black">
+                <h3>${page.list.get(2).title}</h3>
+                        </font>
+                    </a>
+                <p>${page.list.get(2).description}</p>
             </div>
             <div class="card">
-                <h3>标题三</h3>
-                <p>One of the most effective ways to
-                    improve our own writing is to spend
-                    time reading the best writing of others.
-                    This collection of notable essays</p>
+                <a href="${rootPath}/blog/viewblog/${page.list.get(2).id}" style='text-decoration:none;'>
+                    <font color="black">
+                <h3>${page.list.get(3).title}</h3>
+                        </font>
+                    </a>
+                <p>${page.list.get(3).description}</p>
             </div>
             <div class="card">
-                <h3>标题三</h3>
-                <p>One of the most effective ways to
-                    improve our own writing is to spend
-                    time reading the best writing of others.
-                    This collection of notable essays</p>
+                <a href="${rootPath}/blog/viewblog/${page.list.get(2).id}" style='text-decoration:none;'>
+                    <font color="black">
+                <h3>${page.list.get(4).title}</h3>
+                        </font>
+                    </a>
+                <p>${page.list.get(4).description}</p>
             </div>
             <div class="card">
-                <h3>标题三</h3>
-                <p>One of the most effective ways to
-                    improve our own writing is to spend
-                    time reading the best writing of others.
-                    This collection of notable essays</p>
+                <a href="${rootPath}/blog/viewblog/${page.list.get(2).id}" style='text-decoration:none;'>
+                    <font color="black">
+                <h3>${page.list.get(5).title}</h3>
+                        </font>
+                    </a>
+                <p>${page.list.get(5).description}</p>
             </div>
         </div>
         </div>
     </section>
 </div><!--内容结束-->
-<footer><!--页尾开始-->
-
-</footer><!--页尾结束-->
 </body>
 </html>

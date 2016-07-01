@@ -89,6 +89,7 @@
                                                         <div class="col-md-1"></div>
                                                         <div class="col-md-2">
                                                             <div class="pull-left">
+                                                                <span class="user">评论时间：</span>
                                                                 <span class="time">${comment.inputtime}</span>
                                                             </div>
                                                         </div>

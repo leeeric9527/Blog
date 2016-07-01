@@ -12,14 +12,14 @@ import java.util.List;
 public class Blog {
 
     @Basic
-    @Column(name = "title", nullable = true, length = 80)
+    @Column(name = "title", nullable = true, length = 125)
     private String title;
 
     @Id
     @Column(name = "id", nullable = false)
     private int id;
     @Basic
-    @Column(name = "description", nullable = true, length = 80)
+    @Column(name = "description", nullable = true, length = 255)
     private String description;
     @Basic
     @Column(name = "content", nullable = true, length = -1)

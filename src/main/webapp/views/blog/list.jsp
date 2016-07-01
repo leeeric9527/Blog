@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="${assetsPath}/css/app.min.css">
 </head>
 <body onload="onLoad()">
-<%--<jsp:include page="../common/header.jsp" />--%>
 <div class="main">
     <div class="container">
         <div class="breadcrumb-wrapper">
@@ -23,8 +22,10 @@
                 <ol class="breadcrumb">
                     <li><a href="${rootPath}/index">首页</a></li>
                     <li class="active"><a>博客列表</a></li>
+
                 </ol>
             </div>
+
         </div>
 
         <div id="adv-img" class="container-fluid">
@@ -99,28 +100,6 @@
         </div>
 
         <div id="adv-article">
-<%--            <div class="nav">
-                <ul>
-                    <span>分类:</span>
-                    <c:if test="${type==null}"> <li><a href="${rootPath}/news/list" class="active">全部</a></li></c:if>
-                    <c:if test="${type!=null}"> <li><a href="${rootPath}/news/list" >全部</a></li></c:if>
-
-                    <c:if test="${type==1}"> <li><a href="${rootPath}/news/list/1" class="active">教研</a></li></c:if>
-                    <c:if test="${type!=1}"> <li><a href="${rootPath}/news/list/1" >教研</a></li></c:if>
-
-                    <c:if test="${type==2}"> <li><a href="${rootPath}/news/list/2" class="active">管理</a></li></c:if>
-                    <c:if test="${type!=2}"> <li><a href="${rootPath}/news/list/2" >管理</a></li></c:if>
-
-                    <c:if test="${type==3}"> <li><a href="${rootPath}/news/list/3" class="active">综合</a></li></c:if>
-                    <c:if test="${type!=3}"> <li><a href="${rootPath}/news/list/3" >综合</a></li></c:if>
-
-                    <c:if test="${type==4}"> <li><a href="${rootPath}/news/list/4" class="active">海外</a></li></c:if>
-                    <c:if test="${type!=4}"> <li><a href="${rootPath}/news/list/4" >海外</a></li></c:if>
-                    &lt;%&ndash;<li><a href="${rootPath}/news/list/2">管理</a></li>&ndash;%&gt;
-                    &lt;%&ndash;<li><a href="${rootPath}/news/list/3">综合</a></li>&ndash;%&gt;
-                    &lt;%&ndash;<li><a href="${rootPath}/news/list/4">海外</a></li>&ndash;%&gt;
-                </ul>
-            </div>--%>
 
             <c:forEach begin="${listStart}" end="${page.list.size()}" items="${page.list}" var="blogs">
                 <div class="row">
