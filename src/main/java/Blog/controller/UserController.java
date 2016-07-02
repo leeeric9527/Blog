@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 
@@ -35,21 +36,22 @@ public class UserController {
      */
     @ResponseBody
     @RequestMapping(value = "/login",method =RequestMethod.POST)
-    public StatusMessage login(String username, String password, HttpSession session){
+    public StatusMessage login(RedirectAttributes redirectAttributes,String username, String password, HttpSession session){
         //判断是否有此用户
         StatusMessage statusMessage = new StatusMessage(0,"登陆成功");
-
+        User user=userDao.getUserByName(username);
         if( username ==null||username.length()==0)
         {
-            statusMessage.setMessage("请填写用户名");
+            statusMessage.setMessage("请填写用户名！");
             statusMessage.setStatus(0);
-            return statusMessage;
         }
-        User user=userDao.getUserByName(username);
-        if(password ==null||password.length()==0){
+        else if(!userDao.isUsernameExit(username)){
+            statusMessage.setMessage("用户名不存在！");
+            statusMessage.setStatus(0);
+        }
+        else if(password ==null||password.length()==0){
             statusMessage.setMessage("请填写密码");
             statusMessage.setStatus(0);
-            return statusMessage;
         }
         else if(!password .equals(user.getPassword())){
             statusMessage.setMessage("密码错误");
@@ -59,6 +61,7 @@ public class UserController {
             statusMessage.setMessage("登陆成功！");
             statusMessage.setStatus(1);
         }
+        redirectAttributes.addFlashAttribute("Msg","登陆成功!");
         session.setAttribute("user",user);
         return statusMessage;
     }
@@ -76,78 +79,54 @@ public class UserController {
      */
     @ResponseBody
     @RequestMapping(value = "/register",method = RequestMethod.POST)
-    public StatusMessage register(Model model,
+    public StatusMessage register(RedirectAttributes redirectAttributes,
                                   String username, String password, String email, String sex, String interest, String city, HttpSession session){
+        System.out.println("register----");
+        User user=new User();
+        StatusMessage statusMessage = null;
+        //User user  = new User();
 
-        StatusMessage statusMessage = new StatusMessage(1,"注册成功");
-        User user  = new User();
-        if(username!=""){
+        if(username==""||username==null){
+            statusMessage = new StatusMessage(0,"请输入用户名！");
+        }
+        else if(userDao.isUsernameExit(username)){
+
+            statusMessage=new StatusMessage(0,"用户名已存在！");
+        }
+        else if(password==""||password==null){
+            statusMessage=new StatusMessage(0,"请输入密码！");
+        }
+        else if(sex==""||sex==null){
+            statusMessage=new StatusMessage(0,"请填写性别！");
+        }
+        else if(email==""||email==null){
+            statusMessage=new StatusMessage(0,"请填写邮箱！");
+        }
+        else if(city==""||city==null){
+            statusMessage=new StatusMessage(0,"请填写城市！");
+        }
+        else if(interest==""||interest==null){
+            statusMessage=new StatusMessage(0,"请填写兴趣！");
+        }
+        else {
             user.setUsername(username);
-            statusMessage.setStatus(1);
-
-        }
-        else{
-            //model.addAttribute("registerMessage","请设置用户名");
-            statusMessage.setMessage("请设置用户名");
-            statusMessage.setStatus(0);
-            return statusMessage;
-        }
-        if(password!=""){
             user.setPassword(password);
-            statusMessage.setStatus(1);
-        }
-        else{
-            statusMessage.setMessage("请设置密码");
-            statusMessage.setStatus(0);
-            return statusMessage;
-        }
-        if(sex!=""){
             user.setSex(sex);
-        }
-        else{
-            statusMessage.setMessage("请选择性别");
-            statusMessage.setStatus(0);
-            return statusMessage;
-        }
-        if(email!=""){
             user.setEmail(email);
-            statusMessage.setStatus(1);
-        }
-
-        else{
-            statusMessage.setMessage("请填写邮箱");
-            statusMessage.setStatus(0);
-            return statusMessage;
-        }
-        if(city!=""){
             user.setCity(city);
-            statusMessage.setStatus(1);
-        }
-
-        else{
-            statusMessage.setMessage("请填写城市");
-            statusMessage.setStatus(0);
-            return statusMessage;
-        }
-        if(interest!=""){
             user.setInterest(interest);
-            statusMessage.setStatus(1);
+            session.setAttribute("user",user);
+            userDao.save(user);
+            statusMessage=new StatusMessage(1,"注册成功！，您已登录");
         }
 
-        else{
-            statusMessage.setMessage("请填写兴趣");
-            statusMessage.setStatus(0);
-            return statusMessage;
-        }
-        session.setAttribute("user",user);
-        userDao.save(user);
-        model.addAttribute("registerMessage","注册成功");
-        statusMessage.setStatus(1);
+        redirectAttributes.addFlashAttribute("Msg","删除成功!");
         return statusMessage;
     }
 
     @RequestMapping(value = "/logout" , method = RequestMethod.GET)
-    public String logout(HttpSession session){
+    public String logout(HttpSession session,RedirectAttributes redirectAttributes){
+        redirectAttributes.addFlashAttribute("Msg","登出成功!");
         session.removeAttribute("user");
         return "redirect:/index";
     }

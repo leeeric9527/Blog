@@ -19,7 +19,36 @@ public class UserDao extends BaseDao {
 
         List<User> userlist=query.list();
 
-        return userlist.get(0);    }
+        return userlist.get(0);
+    }
+
+    /**
+     * 判断用户名是否存在
+     * @param username
+     * @return
+     */
+    public boolean isUsernameExit(String username){
+        if(HQuery("username",username) == null){
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * 查询
+     * @param colume
+     * @param value
+     * @return
+     */
+    private User HQuery(String colume , String value){
+        String hql = "from User  where "+colume+"=?";
+        Query query = query(hql);
+        //query.setString(0, String.valueOf(value));
+        query.setString(0, value);
+        User results = (User) query.uniqueResult();
+        return results;
+    }
     public void save(User user){
         super.save(user);
     }

@@ -13,6 +13,7 @@
 <head>
     <title>博客列表</title>
     <link rel="stylesheet" href="${assetsPath}/css/app.min.css">
+    <link rel="stylesheet" href="${assetsPath}/css/writeblog.css">
 </head>
 <body onload="onLoad()">
 <div class="main">
@@ -24,8 +25,20 @@
                     <li class="active"><a>博客列表</a></li>
 
                 </ol>
-            </div>
 
+            </div>
+            <div class="navigator">
+                <ul>
+                    <li class="btnWrite">
+                    <a href="${rootPath}/blog/add" style="text-decoration: none">
+                        <span>
+                         <img src="http://static.blog.csdn.net/images/ico_write.gif">
+                            写新博客
+                        </span>
+                    </a>
+                    </li>
+                </ul>
+            </div>
         </div>
 
         <div id="adv-img" class="container-fluid">
@@ -118,7 +131,7 @@
                                         <div class="title"><a href="${rootPath}/blog/viewblog/${blogs.id}">${blogs.title}</a></div>
                                         <div class="decs">${blogs.description}</div>
                                         <div class="time"><i class="fa fa-clock-o"></i>上传时间: ${blogs.inputtime}</div>
-                                        <a href="${rootPath}/blog/delete/${blogs.id}"> <li >删除</li></a>
+
                                     </div>
                                 </c:when>
                                 <c:otherwise>
@@ -134,7 +147,7 @@
                                         <div class="title"><a href="${rootPath}/blog/viewblog/${blogs.id}">${blogs.title}</a></div>
                                         <div class="decs">${blogs.description}</div>
                                         <div class="time"><i class="fa fa-clock-o"></i>上传时间: ${blogs.inputtime}</div>
-                                       <a href="${rootPath}/blog/delete/${blogs.id}"> <li >删除</li></a>
+
                                     </div>
                                 </c:otherwise>
                             </c:choose>

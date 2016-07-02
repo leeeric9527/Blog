@@ -50,13 +50,8 @@ public class BlogController {
     public String addBlog(String title, String description, String content,
                           RedirectAttributes redirectAttributes,  HttpSession session){
         User user =(User)session.getAttribute("user");
-        String author=null;
-        if(user!=null){
-            author=user.getUsername();
-        }
-        if(author==null){
-            author="admin";
-        }
+        int author=0;
+        author=((User) session.getAttribute("user")).getId();
         blogDao.addBlog(title,description,content,author);
 
         redirectAttributes.addFlashAttribute("Msg","添加成功！");
@@ -114,5 +109,14 @@ public class BlogController {
         return "redirect:/blog/list";
     }
 
+    @RequestMapping(value="/list/{author}",method=RequestMethod.GET)
+    public String view(Model model, String page,@PathVariable("author") int author){
 
+        int pageNum = page == null ? 1 : Integer.valueOf(page);
+
+        Page<Blog> pageBlogs = blogDao.queryForPBlogsByPage(pageNum, 15,author);
+        model.addAttribute("page",pageBlogs);
+        model.addAttribute("currentPage", pageNum);
+        return "blog/personalblog";
+    }
 }

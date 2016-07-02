@@ -1,62 +1,35 @@
 package Blog.entity;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
- * Created by CrazyCodess on 2016/6/29.
+ * Created by CrazyCodess on 2016/7/3.
  */
 @Entity
 @Table(name = "blog",catalog = "blog")
 public class Blog {
-
-    @Basic
-    @Column(name = "title", nullable = true, length = 125)
     private String title;
-
-    @Id
-    @Column(name = "id", nullable = false)
     private int id;
-    @Basic
-    @Column(name = "description", nullable = true, length = 255)
     private String description;
-    @Basic
-    @Column(name = "content", nullable = true, length = -1)
     private String content;
-
-    @Basic
-    @Column(name = "author", nullable = true, length = 15)
-    private String author;
-    @Basic
-    @Column(name = "comment", nullable = true, length = -1)
+    private Integer author;
     private String comment;
-
-    @Basic
-    @Column(name = "hits", nullable = true)
     private Integer hits;
-    @Basic
-    @Column(name = "thumb", nullable = true, length = 255)
     private String thumb;
-    @Basic
-    @Column(name = "inputtime", nullable = true, length = 20)
     private String inputtime;
 
-/*
-    @OneToMany(targetEntity = Comment.class)
-    @JoinColumn(name="id",referencedColumnName = "id")
-    private List<Comment> comments=new ArrayList<Comment>();
-*/
+    public Blog() {
+    }
 
-
-    public Blog(String title, String description, String content,
-                String author ) {
+    public Blog(String title, String description, String content, Integer author) {
         this.title = title;
         this.description = description;
         this.content = content;
         this.author = author;
     }
 
+    @Basic
+    @Column(name = "title", nullable = true, length = 125)
     public String getTitle() {
         return title;
     }
@@ -65,7 +38,8 @@ public class Blog {
         this.title = title;
     }
 
-
+    @Id
+    @Column(name = "id", nullable = false)
     public int getId() {
         return id;
     }
@@ -74,21 +48,8 @@ public class Blog {
         this.id = id;
     }
 
-
-/*
-    public List<Comment> getComments() {
-        return comments;
-    }
-
-    public void setComments(List<Comment> comments) {
-        this.comments = comments;
-    }*/
-
-    public Blog() {
-    }
-
-
-
+    @Basic
+    @Column(name = "description", nullable = true, length = 255)
     public String getDescription() {
         return description;
     }
@@ -97,7 +58,8 @@ public class Blog {
         this.description = description;
     }
 
-
+    @Basic
+    @Column(name = "content", nullable = true, length = -1)
     public String getContent() {
         return content;
     }
@@ -106,15 +68,18 @@ public class Blog {
         this.content = content;
     }
 
-    public String getAuthor() {
+    @Basic
+    @Column(name = "author", nullable = true)
+    public Integer getAuthor() {
         return author;
     }
 
-    public void setAuthor(String author) {
+    public void setAuthor(Integer author) {
         this.author = author;
     }
 
-
+    @Basic
+    @Column(name = "comment", nullable = true, length = -1)
     public String getComment() {
         return comment;
     }
@@ -123,6 +88,8 @@ public class Blog {
         this.comment = comment;
     }
 
+    @Basic
+    @Column(name = "hits", nullable = true)
     public Integer getHits() {
         return hits;
     }
@@ -131,7 +98,8 @@ public class Blog {
         this.hits = hits;
     }
 
-
+    @Basic
+    @Column(name = "thumb", nullable = true, length = 255)
     public String getThumb() {
         return thumb;
     }
@@ -140,7 +108,8 @@ public class Blog {
         this.thumb = thumb;
     }
 
-
+    @Basic
+    @Column(name = "inputtime", nullable = true, length = 20)
     public String getInputtime() {
         return inputtime;
     }

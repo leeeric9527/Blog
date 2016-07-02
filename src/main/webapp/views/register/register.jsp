@@ -55,8 +55,8 @@
 				</div>
 				<div class="column">
 					<div>
-						<label>Interest:</label>
-						<input type="text" name="interest"/>
+						<label>Password:</label>
+						<input type="password" name="password"/>
 						<span class="error">This is an error</span>
 					</div>
 					<div>
@@ -65,8 +65,8 @@
 						<span class="error">This is an error</span>
 					</div>
 					<div>
-						<label>Password:</label>
-						<input type="password" name="password"/>
+						<label>Interest:</label>
+						<input type="text" name="interest"/>
 						<span class="error">This is an error</span>
 					</div>
 				</div>

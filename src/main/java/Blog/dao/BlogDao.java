@@ -35,8 +35,17 @@ public class BlogDao extends BaseDao{
         Page<Blog> blogsPage = blogPageHandler.getPage(pageNum, pageSize, Blog.class, query);
         return blogsPage;
     }
+    public Page<Blog> queryForPBlogsByPage(int pageNum , int pageSize,int author) {
+        String hql="from Blog as blog where  blog.author=? ";//order by blog.inputtime desc
+        Query query = query(hql);
+        query.setInteger(0,author);
+        Page<Blog> blogsPage = blogPageHandler.getPage(pageNum, pageSize, Blog.class, query);
+        return blogsPage;
+    }
 
-    public void addBlog(String title, String description, String content,String author){
+
+
+    public void addBlog(String title, String description, String content,int author){
         Blog blog=new Blog( title,  description,  content,author);
         long currentTime=System.currentTimeMillis()/1000;
         blog.setInputtime( String.valueOf(currentTime));

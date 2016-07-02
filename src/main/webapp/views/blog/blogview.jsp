@@ -57,7 +57,7 @@
 
                                     <div class="contact-icon pull-right">
                                         <span>分享到：</span>
-                                        <a href=""><i class="contact-icon fa fa-weibo"></i></a>
+                                        <a href="http://service.weibo.com/share/share.php?appkey=&title=&url=&pic=&searchPic=false&style=simple" target="_blank"><i class="contact-icon fa fa-weibo"></i></a>
                                         <a href=""><i class="contact-icon fa fa-weixin"></i></a>
                                         <a href=""><i class="contact-icon fa fa-qq"></i></a>
                                         <a href=""><i class="contact-icon fa fa-renren"></i></a>
@@ -117,7 +117,7 @@
                                 <div class="clear"></div>
                                 <div class="line"></div>
 
-
+                                <img id="imgSinaShare" class="img_sina_share" title="将选中内容分享到新浪微博" src="http://simg.sinajs.cn/blog7style/images/common/share.gif" />
 
 
 
@@ -160,5 +160,61 @@
         getFlashHtml(url,replaceImg);
     });
 </script>
+
+<!--以下是微博分享功能，没做成功，等以后有时间再研究-->
+<%--
+<script>
+    var eleImgShare = document.getElementById("imgSinaShare");
+
+    var $sinaMiniBlogShare = function(eleShare, eleContainer) {
+        var eleTitle = document.getElementsByTagName("title")[0];
+        eleContainer = eleContainer || document;
+        var funGetSelectTxt = function() {
+            var txt = "";
+            if(document.selection) {
+                txt = document.selection.createRange().text;	// IE
+            } else {
+                txt = document.getSelection();
+            }
+            return txt.toString();
+        };
+        eleContainer.onmouseup = function(e) {
+            e = e || window.event;
+            var txt = funGetSelectTxt(), sh = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+            var left = (e.clientX - 40 < 0) ? e.clientX + 20 : e.clientX - 40, top = (e.clientY - 40 < 0) ? e.clientY + sh + 20 : e.clientY + sh - 40;
+            if (txt) {
+                eleShare.style.display = "inline";
+                eleShare.style.left = left + "px";
+                eleShare.style.top = top + "px";
+            } else {
+                eleShare.style.display = "none";
+            }
+        };
+        eleShare.onclick = function() {
+            var txt = funGetSelectTxt(), title = (eleTitle && eleTitle.innerHTML)? eleTitle.innerHTML : "未命名页面";
+            if (txt) {
+                window.open('http://v.t.sina.com.cn/share/share.php?title=' + txt + '→来自页面"' + title + '"的文字片段&url=' + window.location.href);
+            }
+        };
+    }(eleImgShare);
+</script>
+<div id="ad">
+    <script type="text/javascript">	google_ad_client = "pub-0090627341039040";google_ad_slot = "2041257798";google_ad_width = 468;google_ad_height = 60;</script><script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-11205167-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+</div>
+--%>
+
 </body>
 </html>

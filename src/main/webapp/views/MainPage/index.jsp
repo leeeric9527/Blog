@@ -24,8 +24,8 @@
             <ul>
                 <li><a href="${rootPath}/user/logout">退出登录</a></li>
                 <li><a href="${rootPath}/blog/list">博客列表</a></li>
-
-                <li><a href="#"> ${sessionScope.user.username}</a></li>
+                <li><a href="${rootPath}/blog/list/${sessionScope.user.id}">个人博客</a></li>
+                <%--<li><a href="#"> ${sessionScope.user.username}</a></li>--%>
                 </ul>
             </c:if>
             <c:if test="${sessionScope.user==null}">
@@ -52,6 +52,10 @@
         </div>
     </header><!--页头结束-->
 </div>
+<script type="text/javascript"src="//cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
+<%--<script type="text/javascript"src="${assetsPath}/js/main.min.js"></script>--%>
+<script type="text/javascript" src="//cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script type="text/javascript"src="//cdn.bootcss.com/jquery.form/3.51/jquery.form.min.js"></script>
 <div id="content"><!--内容开始-->
 <section class="green-section">
     <div class="wrapper">
@@ -162,5 +166,39 @@
         </div>
     </section>
 </div><!--内容结束-->
+
+<script>
+
+    $(function(){
+        function alertMessage(message) {
+            var insert =
+                    "<div class='suspend' style='width: 100%;height: 100%;display: none;z-index: 2;background-color: rgba(0,0,0,.6);position: fixed;top: 0;left: 0;'>" +
+                    "<div class='suspend-content' style='text-align:right;padding: 30px 40px;width: 400px;height: 200px;background-color: #fff;border-radius: 4px;position: fixed;top: 26%;left: 36%;'>" +
+                    "<p class='alertMessage' style='text-align:left;font-size: 22px;height: 80px;color: #000;font-weight: bold;margin-bottom: 30px;'></p>" +
+                    " <button type='button' class='btn btn-success'>确定</button>" +
+                    "</div>" +
+                    "</div>";
+            $('body').append(insert);
+            $('.alertMessage').html(message);
+            $('.suspend').css('display','block');
+            $('.btn').on('click',function(){
+                $('.suspend').css('display','none');
+            });
+
+
+        };
+        $(document).ready(function () {
+            var msg="${Msg}";
+//            var msg="abc";
+
+            if(msg!=''){
+                alertMessage(msg);
+            }
+        });
+    });
+
+
+</script>
 </body>
+
 </html>
