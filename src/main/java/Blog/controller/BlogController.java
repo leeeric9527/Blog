@@ -110,11 +110,15 @@ public class BlogController {
     }
 
     @RequestMapping(value="/list/{author}",method=RequestMethod.GET)
-    public String view(Model model, String page,@PathVariable("author") int author){
+    public String view(Model model, String page,@PathVariable("author") int author,RedirectAttributes redirectAttributes){
 
         int pageNum = page == null ? 1 : Integer.valueOf(page);
 
         Page<Blog> pageBlogs = blogDao.queryForPBlogsByPage(pageNum, 15,author);
+        if(pageBlogs==null||pageBlogs.getList().size()==0){
+            redirectAttributes.addFlashAttribute("Msg","你还没有写过博客,请编写博客");
+            return "redirect:/blog/add";
+        }
         model.addAttribute("page",pageBlogs);
         model.addAttribute("currentPage", pageNum);
         return "blog/personalblog";

@@ -36,7 +36,7 @@ public class UserController {
      */
     @ResponseBody
     @RequestMapping(value = "/login",method =RequestMethod.POST)
-    public StatusMessage login(RedirectAttributes redirectAttributes,String username, String password, HttpSession session){
+    public StatusMessage login(String username, String password, HttpSession session){
         //判断是否有此用户
         StatusMessage statusMessage = new StatusMessage(0,"登陆成功");
         User user=userDao.getUserByName(username);
@@ -61,7 +61,7 @@ public class UserController {
             statusMessage.setMessage("登陆成功！");
             statusMessage.setStatus(1);
         }
-        redirectAttributes.addFlashAttribute("Msg","登陆成功!");
+
         session.setAttribute("user",user);
         return statusMessage;
     }
@@ -79,7 +79,7 @@ public class UserController {
      */
     @ResponseBody
     @RequestMapping(value = "/register",method = RequestMethod.POST)
-    public StatusMessage register(RedirectAttributes redirectAttributes,
+    public StatusMessage register(
                                   String username, String password, String email, String sex, String interest, String city, HttpSession session){
         System.out.println("register----");
         User user=new User();
@@ -119,14 +119,12 @@ public class UserController {
             userDao.save(user);
             statusMessage=new StatusMessage(1,"注册成功！，您已登录");
         }
-
-        redirectAttributes.addFlashAttribute("Msg","删除成功!");
         return statusMessage;
     }
 
     @RequestMapping(value = "/logout" , method = RequestMethod.GET)
-    public String logout(HttpSession session,RedirectAttributes redirectAttributes){
-        redirectAttributes.addFlashAttribute("Msg","登出成功!");
+    public String logout(HttpSession session){
+
         session.removeAttribute("user");
         return "redirect:/index";
     }

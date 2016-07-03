@@ -1,4 +1,4 @@
-﻿数据库课程设计-博客系统 
+数据库课程设计-博客系统 
 
 # Blog project
 
@@ -9,8 +9,9 @@
 
 
 * bissolee 
-
 * CrazyCodess
+* 路凯程
+* 马鑫豪
 ##数据库
 1. 选用mysql数据库
 2. 用户名：root
