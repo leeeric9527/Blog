@@ -18,7 +18,8 @@
 3. 密码：123456
 4. 新建数据库名为blog,字符集设为：utf8 -- UTF-8 Unicode，排序规则:utf8_general_ci
 5. 运行blog.sql文件，导入数据库
-## 部署
+
+##  部署
 1. 将target目录下的XST-0.0.1-SNAPSHOT文件改名为blog文件夹，然后复制到tomcat的webapps目录下
 2. 运行tomcat服务器
 3. 在浏览器输入http://localhost:8080/blog/index即可显示主页
