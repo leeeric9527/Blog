@@ -12,7 +12,7 @@
 * 路凯程
 * 马鑫豪
 
-## 数据库
+## 数据库(根据自己配置修改文件Blog/src/main/resources/conf/mysql.properties)
 1. 选用mysql数据库
 2. 用户名：root
 3. 密码：123456
